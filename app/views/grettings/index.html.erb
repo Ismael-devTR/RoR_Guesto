@@ -1,28 +1,20 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Grettings</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Message</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <p id="notice"><%= notice %></p>
+      <%= render("form", gretting: Gretting.new) %>
+    <br/>
 
-  <tbody>
     <% @grettings.each do |gretting| %>
-      <tr>
-        <td><%= gretting.name %></td>
-        <td><%= gretting.message %></td>
-        <td><%= link_to 'Show', gretting %></td>
-        <td><%= link_to 'Edit', edit_gretting_path(gretting) %></td>
-        <td><%= link_to 'Destroy', gretting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="media">
+        <img src="<%= gravatarized_url(gretting.name) %>"
+        class="align-self-start mr-3">
+        <div class="media-body">
+          <h5 class="mt-0"><%= gretting.name %></h5>
+          <%= gretting.message %>
+        </div>
+      </div>
+    <br/>
     <% end %>
-  </tbody>
-</table>
 
 <br>
 

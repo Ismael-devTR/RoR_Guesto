@@ -3,7 +3,7 @@ class GrettingsController < ApplicationController
 
   # GET /grettings or /grettings.json
   def index
-    @grettings = Gretting.all
+    @grettings = Gretting.all.order(created_at: :desc)
   end
 
   # GET /grettings/1 or /grettings/1.json
@@ -25,7 +25,7 @@ class GrettingsController < ApplicationController
 
     respond_to do |format|
       if @gretting.save
-        format.html { redirect_to gretting_url(@gretting), notice: "Gretting was successfully created." }
+        format.html { redirect_to root_path, notice: "Gretting was successfully created." }
         format.json { render :show, status: :created, location: @gretting }
       else
         format.html { render :new, status: :unprocessable_entity }

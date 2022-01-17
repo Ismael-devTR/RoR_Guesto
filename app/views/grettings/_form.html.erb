@@ -1,27 +1,34 @@
-<%= form_with(model: gretting) do |form| %>
-  <% if gretting.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(gretting.errors.count, "error") %> prohibited this gretting from being saved:</h2>
-
-      <ul>
-        <% gretting.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Send me a message!</h5>
+    <%= form_with(model: gretting, local: true) do |form| %>
+      <% if gretting.errors.any? %>
+      <div id="error_explanation">
+      <h2>
+        <%= pluralize(gretting.errors.count, "error") %>
+        prohibited this gretting from being saved:
+      </h2>
+  <ul>
+  <% gretting.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  </ul>
   </div>
-
-  <div class="field">
-    <%= form.label :message %>
-    <%= form.text_area :message %>
+  <% end %>
+  <div class="form-group">
+  <%= form.text_field :name,
+  placeholder: "Name",
+  class: "form-control" %>
   </div>
-
+  <div class="form-group">
+  <%= form.text_area :message,
+  placeholder: "Message",
+  class: "form-control" %>
+  </div>
   <div class="actions">
-    <%= form.submit %>
+  <%= form.submit "Send!",
+  class: "btn btn-outline-primary btn-block" %>
   </div>
-<% end %>
+  <% end %>
+  </div>
+</div>
