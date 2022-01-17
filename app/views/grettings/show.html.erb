@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @gretting.name %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @gretting.message %>
+</p>
+
+<%= link_to 'Edit', edit_gretting_path(@gretting) %> |
+<%= link_to 'Back', grettings_path %>
